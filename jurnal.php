@@ -13,7 +13,7 @@
 		$kelas=mysql_query("select * from matakuliah order by nm_mk asc ",$koneksi);
 		
 		//untuk mencari jumlah
-		echo "Jumlah Kelas : ".$jumlah_mk=mysql_num_rows($kelas);
+		echo "Jumlah Matakuliah : ".$jumlah_mk=mysql_num_rows($kelas);
 		echo " >> Jumlah Siswa : ".$jumlah_siswa=mysql_num_rows(mysql_query("select * from siswa ",$koneksi));
 		echo "<br><br>";
 		
