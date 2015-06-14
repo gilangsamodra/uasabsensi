@@ -1,4 +1,3 @@
-coba
 <?php include "cek_session.php"; ?>
 <div class="post">
 	<h2 class="title"><a href="#">Selamat Datang </a></h2>
