@@ -85,7 +85,7 @@ if (isset($_POST['userid']))
 </tr>
 <tr> 
 	<td align="right"><img src="./images/kib.jpg"></td>
-	<td bgcolor="#5686c6" ><div align="center"><strong><font face="verdana" size="3"></font></strong></div></td>
+	<td bgcolor="#5686C6" ><div align="center"><strong><font face="verdana" size="3"></font></strong></div></td>
 	<td><img src="./images/kab.jpg"></td>
 </tr>
 </table>
