@@ -7,7 +7,7 @@ ini_set('display_errors',FALSE);
 $host="localhost";
 $user="root";
 $pass="";
-$db="absensi_db";
+$db="absensi_db1";
 
 
 $koneksi=mysql_connect($host,$user,$pass);
