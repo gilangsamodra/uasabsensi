@@ -53,10 +53,6 @@
 		
   <marquee>
     <img src="ar.jpg"width="50"; height="50"; _float=left; margin =20px; />
-	<img src="gilang.jpg"width="50"; height="50"; _float=left; margin =20px; />
-	<img src="cindy.jpg"width="50"; height="50"; _float=left; margin =20px; />
-	<img src="arif.jpg"width="50"; height="50"; _float=left; margin =20px; />
-	<img src="heri.jpg"width="50"; height="50"; _float=left; margin =20px; />
 		</marquee>
 	</div>
 	<!-- end #footer -->
