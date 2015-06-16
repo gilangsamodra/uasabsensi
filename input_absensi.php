@@ -1,15 +1,15 @@
 <?php 
 	include "conn.php";
-	$kelas=$_GET['kd_kelas'];
-	$query=mysql_fetch_array(mysql_query("select * from kls_mk where kd_kelas='$kd_kelas'"));
+	$kd_mk=$_GET['kd_mk'];
+	$query=mysql_fetch_array(mysql_query("select * from kelas where kd_mk='$kd_mk'"));
 ?>
 <div class="post">
-	<h2 class="title"><a href="#">ABSENSI KELAS <?php echo $query['nama_kelas'];?> <?php echo $query['nm_mk'];?></a></h2>
+	<h2 class="title"><a href="#">ABSENSI KELAS <?php echo $query['nama_kelas'];?></a></h2>
 	<p class="meta"><em>Sunday, April 26, 2009 7:27 AM Posted by <a href="#">Someone</a></em></p>
 	<div class="entry">
 		<p>
 		<form action="?page=proses" method="post" name="postform">
-		<input type="hidden" value="<?php echo $query['kd_kelas'];?>" name="kd_kelas"/>
+		<input type="hidden" value="<?php echo $query['kd_mk'];?>" name="kd_mk"/>
 		<table class="datatable">
 		<tr>
 			<td width="24%" align="left" colspan="6">Tanggal : <input type="text" name="tanggal"  value="<?php if(empty($_POST['tgl'])){ echo $tanggal;}else{ echo "$_POST[tgl]$_GET[tgl]"; }?>" size="11"><a href="javascript:void(0)" onClick="if(self.gfPop)gfPop.fPopCalendar(document.postform.tanggal);return false;" ><img name="popcal" align="absmiddle" src="calender/calbtn.gif" width="34" height="29" border="0" alt=""></a></td>
@@ -30,7 +30,8 @@
 		while($row=mysql_fetch_array($query)){
 		?>
 		<tr>
-			<td><?php echo $c=$c+1;?></td><td><?php echo $row['nama'];?></td>
+			<td><?php echo $c=$c+1;?></td>
+			<td><?php echo $row['nama'];?></td>
 			<td align="center">
 				<?php
 				echo "<input type=checkbox name=hadir[] value=$row[kd_siswa] id='$no'>";
@@ -77,7 +78,7 @@
 		<br />
 		<input type="checkbox" name="selesai" value="yes" />Tandai Kelas Selesai
 		<br /><br />
-		<input type="submit" value="Submit" />
+		<input type="submit" value="Input" />
 		</form>
 		</p>
   </div>
