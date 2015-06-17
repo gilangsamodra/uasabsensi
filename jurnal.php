@@ -8,17 +8,21 @@
 		<tr>
 			<th>No</th><th>Matakuliah</th><th>Dosen</th><th>Jumlah Mahasiswa</th><th>Aksi</th>
 		</tr>
+		
+
 		<?php 
 		include "conn.php";
-		$kelas=mysql_query("select * from matakuliah order by nm_mk asc ",$koneksi);
+		$kd_kelas=$_GET['kd_kelas'];
+		$matakuliah=mysql_query("select * from matakuliah where kd_kelas='$kd_kelas' order by nm_mk asc ",$koneksi);
 		
 		//untuk mencari jumlah
-		echo "Jumlah Matakuliah : ".$jumlah_mk=mysql_num_rows($kelas);
+		echo "Jumlah Matakuliah : ".$jumlah_mk=mysql_num_rows($matakuliah);
 		echo " >> Jumlah Siswa : ".$jumlah_siswa=mysql_num_rows(mysql_query("select * from siswa ",$koneksi));
 		echo "<br><br>";
 		
-		while($row=mysql_fetch_array($kelas)){
-			//mencari jumlah matakuliah di masing-masing kelas
+		
+		while($row=mysql_fetch_array($matakuliah)){
+			//mencari jumlah siswa masing2 mk
 			$siswa=mysql_query("select * from siswa where kd_mk='$row[kd_mk]'",$koneksi);
 			$jumlah=mysql_num_rows($siswa);
 			?>
