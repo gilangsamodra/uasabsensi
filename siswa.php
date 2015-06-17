@@ -16,21 +16,21 @@
 			<td>Telp</td><td><input type="text" size="20" name="telp" /></td>
 		</tr>
 		<tr>
-			<td>Alamat</td><td><textarea cols="20" rows="5" name="alamat"></textarea></td>
+			<td>Alamat</td><td><input type="text" size="20" name="alamat" /></td>
 		</tr>
 		<tr>
-			<td>Kelas</td>
+			<td>Matakuliah</td>
 			<td>
-			<select name="kelas">
-			<option value="0" selected="selected">Pilih Kelas</option>
+			<select name="matakuliah">
+			<option value="0" selected="selected">Pilih Matakuliah</option>
 			<?php 
 			include "conn.php";
 			
-			$query=mysql_query("select * from kelas order by nama_kelas asc",$koneksi);
+			$query=mysql_query("select * from matakuliah order by nm_mk asc",$koneksi);
 			
 			while($row=mysql_fetch_array($query))
 			{
-				?><option value="<?php  echo $row['kd_kelas']; ?>"><?php  echo $row['nama_kelas']; ?></option><?php 
+				?><option value="<?php  echo $row['kd_mk']; ?>"><?php  echo $row['nm_mk']; ?></option><?php 
 			}
 			?>
 			</select>	
@@ -46,9 +46,9 @@
 		//untuk input
 		if(isset($_POST['nama'])){
 			$nama=ucwords($_POST['nama']);
-			$tgl=$_POST['tgl'];
+			$telp=$_POST['telp'];
 			$alamat=$_POST['alamat'];
-			$kd_mk=$_POST['kd_mk'];
+			$kd_mk=$_POST['matakuliah'];
 			
 			$query=mysql_query("insert into siswa(nama, telp, alamat, kd_mk) values('$nama','$telp','$alamat','$kd_mk')",$koneksi);
 			
