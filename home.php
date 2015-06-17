@@ -1,7 +1,7 @@
 <?php include "cek_session.php"; ?>
 <div class="post">
 	<h2 class="title"><a href="#">Selamat Datang </a></h2>
-	<p class="meta"><em>Monday, Juni 15, 2015 4.57 AM Posted by <a href="#">Someone</a></em></p>
+	<p class="meta"><em>Posted by <a href="#">kelompok 3</a></em></p>
 	<div class="entry">
 		<p>Selamat datang di Jurnal Matakuliah Teknik Informatika Universitas Negeri Surabaya.. </p>
 	<p>Jurusan Teknik Informatika adalah satu dari lima jurusan yang ada di selingkung  Fakultas Teknik (FT) Universitas Negeri Surabaya (Unesa). 

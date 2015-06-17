@@ -1,7 +1,7 @@
 <?php include "cek_session.php"; ?>
 <div class="post">
 	<h2 class="title"><a href="#">Halaman Siswa</a></h2>
-	<p class="meta"><em>Sunday, April 26, 2009 7:27 AM Posted by <a href="#">Someone</a></em></p>
+	<p class="meta"><em>Posted by <a href="#">kelompok 3</a></em></p>
 	<div class="entry">
 		<p>
 		

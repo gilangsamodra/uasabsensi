@@ -1,10 +1,4 @@
 
-/*
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-*/
-
 body {
 	margin: 0;
 	padding: 0;
@@ -23,6 +17,8 @@ h1, h2, h3 {  /*kotake jurnal*/
 
 h1 {
  font-size: 20px; }
+ color : #F8F8FF;
+ }
 
 h2 { font-size: 14px; }
 
@@ -501,4 +497,6 @@ p, td, th {
     background-color: #DFE7F2;
     color: #000000;
 }
+
+
 
