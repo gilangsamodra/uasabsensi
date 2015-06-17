@@ -48,9 +48,9 @@
 			$nama=ucwords($_POST['nama']);
 			$tgl=$_POST['tgl'];
 			$alamat=$_POST['alamat'];
-			$kd_kelas=$_POST['kelas'];
+			$kd_mk=$_POST['kd_mk'];
 			
-			$query=mysql_query("insert into siswa(nama, telp, alamat, kd_kelas) values('$nama','$telp','$alamat','$kd_kelas')",$koneksi);
+			$query=mysql_query("insert into siswa(nama, telp, alamat, kd_mk) values('$nama','$telp','$alamat','$kd_mk')",$koneksi);
 			
 			if($query){
 				echo "<br>";
@@ -64,17 +64,20 @@
 		}
 		
 		//untuk menampilkan
-		$view=mysql_query("select * from siswa order by kd_kelas asc");
+		$view=mysql_query("select * from siswa order by kd_mk asc");
 		?>
 		<br />
 		<table class="datatable">
-		<tr><th>No</th><th>Nama</th><th> Telp</th><th>Alamat</th><th>Kelas</th></tr>
+		<tr><th>No</th><th>Nama</th><th> Telp</th><th>Alamat</th><th>Matakuliah</th></tr>
 		<?php
 		while($row=mysql_fetch_array($view)){
-		$nama_kls=mysql_fetch_array(mysql_query("SELECT nama_kelas FROM kelas WHERE kd_kelas='$row[kd_kelas]'"));	
+		$nm_mk=mysql_fetch_array(mysql_query("SELECT nm_mk FROM matakuliah WHERE kd_mk='$row[kd_mk]'"));	
 		?>
-		<tr><td><?php echo $c=$c+1;?></td><td><?php echo $row['nama'];?></td><td><?php echo $row['telp'];?></td><td><?php echo $row['alamat'];?></td>
-		<td><?php echo $nama_kls['nama_kelas'];?></td></tr>
+		<tr><td><?php echo $c=$c+1;?></td>
+		<td><?php echo $row['nama'];?></td>
+		<td><?php echo $row['telp'];?></td>
+		<td><?php echo $row['alamat'];?></td>
+		<td><?php echo $nm_mk['nm_mk'];?></td></tr>
 		<?php
 		}
 		?>
