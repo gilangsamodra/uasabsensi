@@ -59,6 +59,8 @@
 		//untuk input
 		if(isset($_POST['nm_mk'])){
 			$nm_mk=strtoupper($_POST['nm_mk']);
+				$kd_kelas=$_POST['kelas'];
+				$kd_dosen=$_POST['dosen'];
 			
 			$query=mysql_query("insert into matakuliah(nm_mk,kd_kelas,kd_dosen) values('$nm_mk','$kd_kelas','$kd_dosen')",$koneksi);
 			
@@ -86,12 +88,14 @@
 		</tr>
 		<?php
 		while($row=mysql_fetch_array($view)){
+				$nama_dosen=mysql_fetch_array(mysql_query("SELECT nama_dosen FROM dosen WHERE kd_dosen='$row[kd_dosen]'"));	
+					$nama_kelas=mysql_fetch_array(mysql_query("SELECT nama_kelas FROM kelas WHERE kd_kelas='$row[kd_kelas]'"));	
 		?>
 		<tr>
 		<td><?php echo $c=$c+1;?></td>
 		<td><?php echo $row['nm_mk'];?></td>
-		<td><?php echo $row['nama_kelas'];?></td>
-		<td><?php echo $row['nama_dosen'];?></td>
+		<td><?php echo $nama_kelas['nama_kelas'];?></td>
+		<td><?php echo $nama_dosen['nama_dosen'];?></td>
 		</tr>
 		<?php
 		}
