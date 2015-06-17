@@ -1,7 +1,7 @@
 <?php 
 	include "conn.php";
 	$kd_mk=$_GET['kd_mk'];
-	$query=mysql_fetch_array(mysql_query("select * from materi where kd_mk='$kd_mk'"));
+	$query=mysql_fetch_array(mysql_query("select * from jurnal where kd_mk='$kd_mk'"));
 ?>
 <div class="post">
 	<h2 class="title"><a href="#">Jurnal <?php echo $query['nama_kelas'];?></a></h2>
@@ -25,7 +25,7 @@
 		
 		$no=0;
 		
-		$query=mysql_query("select * from materi where kd_mk='$kd_mk'");
+		$query=mysql_query("select * from jurnal where kd_mk='$kd_mk'");
 		while($row=mysql_fetch_array($query)){
 		?>
 		<tr>
@@ -39,7 +39,7 @@
 			</td>
 			<td align="center">
 				<?php
-				echo "<input type=checkbox name=hadir[] value=$row[kd_siswa] id=$no>";
+				echo "<input type=checkbox name=hadir[] value=$row[pk] id=$no>";
 				$no++;
 				?>
 			</td>
