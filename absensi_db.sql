@@ -22,33 +22,35 @@ USE `absensi_db`;
 --
 
 --
--- Table structure for table `absensi`
+-- Table structure for table `jurnal`
 --
 
-DROP TABLE IF EXISTS `absensi`;
+DROP TABLE IF EXISTS `jurnal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `absensi` (
-  `kd_absensi` int(3) NOT NULL auto_increment,
-  `kd_siswa` int(3) NOT NULL,
-  `kd_kelas` int(3) NOT NULL,
-  `keterangan` enum('h','s','i','a') NOT NULL,
-  `tanggal` varchar(12) NOT NULL,
-  `selesai` varchar(3) NOT NULL,
+CREATE TABLE `jurnal` (
+  `kd_jurnal` int(11) NOT NULL auto_increment,
+  `kd_kelas` int(11) NOT NULL,
   `kd_mk` int(11) NOT NULL,
-  PRIMARY KEY  (`kd_absensi`),
+  `tgl_jurnal` varchar(20) collate latin1_general_ci NOT NULL,
+  `materi` varchar(20) collate latin1_general_ci NOT NULL,
+  `ver_dosen` varchar(20) collate latin1_general_ci NOT NULL,
+  `pk` varchar(20) collate latin1_general_ci NOT NULL,
+  `selesai_jurnal` varchar(20) collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`kd_jurnal`),
+  KEY `kd_kelas` (`kd_kelas`),
   KEY `kd_mk` (`kd_mk`)
-) ENGINE=MyISAM AUTO_INCREMENT=169 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `absensi`
+-- Dumping data for table `jurnal`
 --
 
-LOCK TABLES `absensi` WRITE;
-/*!40000 ALTER TABLE `absensi` DISABLE KEYS */;
-INSERT INTO `absensi` VALUES (168,6,0,'h','15/06/2015','yes',0),(167,3,0,'h','15/06/2015','yes',0),(166,1,0,'h','15/06/2015','yes',0),(165,2,1,'h','','yes',1),(164,1,1,'h','','yes',1);
-/*!40000 ALTER TABLE `absensi` ENABLE KEYS */;
+LOCK TABLES `jurnal` WRITE;
+/*!40000 ALTER TABLE `jurnal` DISABLE KEYS */;
+INSERT INTO `jurnal` VALUES (1,1,1,'15/06/2015','PHP','yes','yes','yes');
+/*!40000 ALTER TABLE `jurnal` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -80,35 +82,58 @@ INSERT INTO `admin` VALUES (1,'Agus Sumarna','sumarna@yahoo.com','pria','agus','
 UNLOCK TABLES;
 
 --
--- Table structure for table `jurnal`
+-- Table structure for table `dosen`
 --
 
-DROP TABLE IF EXISTS `jurnal`;
+DROP TABLE IF EXISTS `dosen`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `jurnal` (
-  `kd_jurnal` int(11) NOT NULL auto_increment,
-  `kd_kelas` int(11) NOT NULL,
-  `kd_mk` int(11) NOT NULL,
-  `tgl_jurnal` varchar(20) collate latin1_general_ci NOT NULL,
-  `materi` varchar(20) collate latin1_general_ci NOT NULL,
-  `ver_dosen` varchar(20) collate latin1_general_ci NOT NULL,
-  `pk` varchar(20) collate latin1_general_ci NOT NULL,
-  `selesai_jurnal` varchar(20) collate latin1_general_ci NOT NULL,
-  PRIMARY KEY  (`kd_jurnal`),
-  KEY `kd_kelas` (`kd_kelas`),
-  KEY `kd_mk` (`kd_mk`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+CREATE TABLE `dosen` (
+  `kd_dosen` varchar(5) collate latin1_general_ci NOT NULL,
+  `nama_dosen` varchar(20) collate latin1_general_ci NOT NULL,
+  `alamat` varchar(30) collate latin1_general_ci NOT NULL,
+  `password` varchar(5) collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`kd_dosen`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `jurnal`
+-- Dumping data for table `dosen`
 --
 
-LOCK TABLES `jurnal` WRITE;
-/*!40000 ALTER TABLE `jurnal` DISABLE KEYS */;
-INSERT INTO `jurnal` VALUES (1,1,1,'15/06/2015','PHP','yes','yes','yes');
-/*!40000 ALTER TABLE `jurnal` ENABLE KEYS */;
+LOCK TABLES `dosen` WRITE;
+/*!40000 ALTER TABLE `dosen` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dosen` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `absensi`
+--
+
+DROP TABLE IF EXISTS `absensi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `absensi` (
+  `kd_absensi` int(3) NOT NULL auto_increment,
+  `kd_siswa` int(3) NOT NULL,
+  `kd_kelas` int(3) NOT NULL,
+  `keterangan` enum('h','s','i','a') NOT NULL,
+  `tanggal` varchar(12) NOT NULL,
+  `selesai` varchar(3) NOT NULL,
+  `kd_mk` int(11) NOT NULL,
+  PRIMARY KEY  (`kd_absensi`),
+  KEY `kd_mk` (`kd_mk`)
+) ENGINE=MyISAM AUTO_INCREMENT=173 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `absensi`
+--
+
+LOCK TABLES `absensi` WRITE;
+/*!40000 ALTER TABLE `absensi` DISABLE KEYS */;
+INSERT INTO `absensi` VALUES (168,6,0,'h','15/06/2015','yes',0),(167,3,0,'h','15/06/2015','yes',0),(166,1,0,'h','15/06/2015','yes',0),(165,2,1,'h','','yes',1),(164,1,1,'h','','yes',1),(169,4,0,'h','15/06/2015','yes',0),(170,5,0,'h','15/06/2015','yes',0),(171,0,0,'h','16/06/2015','yes',0),(172,1,0,'h','17/06/2015','yes',0);
+/*!40000 ALTER TABLE `absensi` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -149,7 +174,7 @@ CREATE TABLE `matakuliah` (
   `kd_kelas` int(11) NOT NULL,
   PRIMARY KEY  (`kd_mk`),
   KEY `kd_kelas` (`kd_kelas`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,8 +183,36 @@ CREATE TABLE `matakuliah` (
 
 LOCK TABLES `matakuliah` WRITE;
 /*!40000 ALTER TABLE `matakuliah` DISABLE KEYS */;
-INSERT INTO `matakuliah` VALUES (1,'Interpro','Andi',1),(2,'RPL','Dwi',1),(3,'Jarkom','Agus',1),(4,'Simbada','IGL',1),(5,'Bhs Inggris','Eva',1);
+INSERT INTO `matakuliah` VALUES (1,'Interpro','Andi',1),(2,'RPL','Dwi',1),(3,'Jarkom','Agus',1),(4,'Simbada','IGL',1),(5,'Bhs Inggris','Eva',1),(6,'Pemvis','Na\'im',0);
 /*!40000 ALTER TABLE `matakuliah` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `materi`
+--
+
+DROP TABLE IF EXISTS `materi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `materi` (
+  `kd_materi` int(11) NOT NULL,
+  `nama_mk` varchar(15) collate latin1_general_ci NOT NULL,
+  `materi` varchar(40) collate latin1_general_ci NOT NULL,
+  `tanggal` date NOT NULL,
+  `kd_mk` int(11) NOT NULL,
+  PRIMARY KEY  (`kd_materi`),
+  KEY `kd_mk` (`kd_mk`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `materi`
+--
+
+LOCK TABLES `materi` WRITE;
+/*!40000 ALTER TABLE `materi` DISABLE KEYS */;
+INSERT INTO `materi` VALUES (1,'Interpro','php','2015-06-01',1),(2,'Simbada','cdm','2015-06-02',2),(3,'Jarkom','router','2015-06-03',3),(4,'RPL','SDLC','2015-06-04',4),(5,'Pemvis','Form','2015-06-05',5);
+/*!40000 ALTER TABLE `materi` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -198,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-15 20:44:46
+-- Dump completed on 2015-06-17 10:03:18
