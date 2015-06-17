@@ -40,7 +40,7 @@ CREATE TABLE `jurnal` (
   PRIMARY KEY  (`kd_jurnal`),
   KEY `kd_kelas` (`kd_kelas`),
   KEY `kd_mk` (`kd_mk`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,7 @@ CREATE TABLE `jurnal` (
 
 LOCK TABLES `jurnal` WRITE;
 /*!40000 ALTER TABLE `jurnal` DISABLE KEYS */;
-INSERT INTO `jurnal` VALUES (1,1,1,'15/06/2015','PHP','yes','yes','yes');
+INSERT INTO `jurnal` VALUES (1,1,1,'15/06/2015','PHP','yes','yes','yes'),(2,1,2,'15/06/2015','SDLC','','',''),(3,1,3,'15/06/2015','router','','',''),(4,1,4,'15/06/2015','cdm','','',''),(5,1,5,'15/06/2015','listening','','','');
 /*!40000 ALTER TABLE `jurnal` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,7 +68,7 @@ CREATE TABLE `admin` (
   `user` varchar(25) collate latin1_general_ci NOT NULL,
   `password` varchar(255) collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +77,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'Agus Sumarna','sumarna@yahoo.com','pria','agus','fdf169558242ee051cca1479770ebac3'),(2,'Siera Nevada','siera@yahoo.com','Wanita','siera','47c0abc24dd9c450577173afdd173d64');
+INSERT INTO `admin` VALUES (1,'Agus Sumarna','sumarna@yahoo.com','pria','agus','fdf169558242ee051cca1479770ebac3'),(2,'Siera Nevada','siera@yahoo.com','Wanita','siera','47c0abc24dd9c450577173afdd173d64'),(3,'gilang','gilangyahoo.com','pria','gilang','c37fddfb7b3f538674c6e9a77e7bf486'),(4,'arik','rik@yahoo.com','wanita','arik','b772852a7859d9e776b7f4254fe97d7e'),(5,'cindy','cindy@yahoo.com','wanita','cindy','cc4b2066cfef89f2475de1d4da4b29c7'),(6,'heri','heri@yahoo.com','pria','heri','6812af90c6a1bbec134e323d7e70587b'),(7,'arif','arif@yahoo.com','pria','arif','0ff6c3ace16359e41e37d40b8301d67f');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,12 +89,12 @@ DROP TABLE IF EXISTS `dosen`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `dosen` (
-  `kd_dosen` varchar(5) collate latin1_general_ci NOT NULL,
+  `kd_dosen` int(5) NOT NULL auto_increment,
   `nama_dosen` varchar(20) collate latin1_general_ci NOT NULL,
   `alamat` varchar(30) collate latin1_general_ci NOT NULL,
-  `password` varchar(5) collate latin1_general_ci NOT NULL,
+  `telp_dosen` varchar(15) collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`kd_dosen`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,6 +103,7 @@ CREATE TABLE `dosen` (
 
 LOCK TABLES `dosen` WRITE;
 /*!40000 ALTER TABLE `dosen` DISABLE KEYS */;
+INSERT INTO `dosen` VALUES (1,'Andi','Ketintang','081234343234'),(2,'Dwi F.','Jambangan','085666666666'),(3,'Agus','Pagesangan','081232141244'),(4,'IGL','Gunung Sari','083325454543'),(5,'Eva','Jagir','085677777777'),(6,'Na\'im R.','Keputih','081233333333');
 /*!40000 ALTER TABLE `dosen` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,10 +171,11 @@ DROP TABLE IF EXISTS `matakuliah`;
 CREATE TABLE `matakuliah` (
   `kd_mk` int(11) NOT NULL auto_increment,
   `nm_mk` varchar(20) collate latin1_general_ci NOT NULL,
-  `dosen` varchar(20) collate latin1_general_ci NOT NULL,
   `kd_kelas` int(11) NOT NULL,
+  `kd_dosen` int(11) NOT NULL,
   PRIMARY KEY  (`kd_mk`),
-  KEY `kd_kelas` (`kd_kelas`)
+  KEY `kd_kelas` (`kd_kelas`),
+  KEY `kd_dosen` (`kd_dosen`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -183,7 +185,7 @@ CREATE TABLE `matakuliah` (
 
 LOCK TABLES `matakuliah` WRITE;
 /*!40000 ALTER TABLE `matakuliah` DISABLE KEYS */;
-INSERT INTO `matakuliah` VALUES (1,'Interpro','Andi',1),(2,'RPL','Dwi',1),(3,'Jarkom','Agus',1),(4,'Simbada','IGL',1),(5,'Bhs Inggris','Eva',1),(6,'Pemvis','Na\'im',0);
+INSERT INTO `matakuliah` VALUES (1,'Interpro',1,1),(2,'RPL',1,2),(3,'Jarkom',1,3),(4,'Simbada',1,4),(5,'Bhs Inggris',1,5),(6,'Pemvis',1,6);
 /*!40000 ALTER TABLE `matakuliah` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,14 +197,13 @@ DROP TABLE IF EXISTS `materi`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `materi` (
-  `kd_materi` int(11) NOT NULL,
-  `nama_mk` varchar(15) collate latin1_general_ci NOT NULL,
+  `kd_materi` int(11) NOT NULL auto_increment,
   `materi` varchar(40) collate latin1_general_ci NOT NULL,
   `tanggal` date NOT NULL,
   `kd_mk` int(11) NOT NULL,
   PRIMARY KEY  (`kd_materi`),
   KEY `kd_mk` (`kd_mk`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -211,7 +212,7 @@ CREATE TABLE `materi` (
 
 LOCK TABLES `materi` WRITE;
 /*!40000 ALTER TABLE `materi` DISABLE KEYS */;
-INSERT INTO `materi` VALUES (1,'Interpro','php','2015-06-01',1),(2,'Simbada','cdm','2015-06-02',2),(3,'Jarkom','router','2015-06-03',3),(4,'RPL','SDLC','2015-06-04',4),(5,'Pemvis','Form','2015-06-05',5);
+INSERT INTO `materi` VALUES (1,'php','2015-06-01',1),(2,'SDLC','2015-06-02',2),(3,'router','2015-06-03',3),(4,'cdm','2015-06-04',4),(5,'listening','2015-06-05',5);
 /*!40000 ALTER TABLE `materi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,4 +252,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-17 10:03:18
+-- Dump completed on 2015-06-17 12:09:26
