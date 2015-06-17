@@ -8,7 +8,7 @@
 	<p class="meta"><em>Sunday, April 26, 2009 7:27 AM Posted by <a href="#">Someone</a></em></p>
 	<div class="entry">
 		<p>
-		<form action="?page=proses" method="post" name="postform">
+		<form action="?page=proses1" method="post" name="postform">
 		<input type="hidden" value="<?php echo $query['kd_mk'];?>" name="kd_mk"/>
 		<table class="datatable">
 		<tr>
@@ -43,6 +43,7 @@
 				$no++;
 				?>
 			</td>
+			<td></td>
 			
 		</tr>
 		<?php
@@ -58,7 +59,6 @@
 				<td align=center>
 				<input type='button' name='pilih' onclick='for (i=0;i<$no;i++){document.getElementById(i).checked=false;}' value='Uncheck All'>
 				</td>
-				<td></td>
 				<td></td>
 			</tr>";
 		?>
