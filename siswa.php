@@ -4,13 +4,11 @@
 	<p class="meta"><em>Posted by <a href="#">kelompok 3</a></em></p>
 	<div class="entry">
 		<p>
-		
-
-		
 		<form name="siswa" action="?page=siswa" method="post">
 		<table>
 		<tr>
-			<td>Nama</td><td><input type="text" size="20" name="nama" /></td>
+			<td>Nama</td><td>
+			<input type="text" size="20" name="nama" /></td>
 		</tr>
 		<tr>
 			<td>Telp</td><td><input type="text" size="20" name="telp" /></td>
@@ -65,6 +63,8 @@
 		
 		//untuk menampilkan
 		$view=mysql_query("select * from siswa order by kd_mk asc");
+		$lihat=mysql_query("select * from matakuliah order by kd_kelas asc");
+	
 		?>
 		<br />
 		<table class="datatable">
@@ -72,14 +72,21 @@
 		<?php
 		while($row=mysql_fetch_array($view)){
 		$nm_mk=mysql_fetch_array(mysql_query("SELECT nm_mk FROM matakuliah WHERE kd_mk='$row[kd_mk]'"));	
+			$nama_kelas=(mysql_query("SELECT nama_kelas FROM kelas WHERE kd_kelas='$lihat[kd_kelas]'"));
+		
 		?>
+		
+		
 		<tr><td><?php echo $c=$c+1;?></td>
 		<td><?php echo $row['nama'];?></td>
 		<td><?php echo $row['telp'];?></td>
 		<td><?php echo $row['alamat'];?></td>
-		<td><?php echo $nm_mk['nm_mk'];?></td></tr>
+		<td><?php echo $nm_mk['nm_mk'];?></td>
 		<?php
 		}
+		
+		
+		
 		?>
 		</table>
 		

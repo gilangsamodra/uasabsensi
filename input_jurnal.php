@@ -1,23 +1,24 @@
 <?php 
 	include "conn.php";
 	$kd_mk=$_GET['kd_mk'];
-	$query=mysql_fetch_array(mysql_query("select * from jurnal where kd_mk='$kd_mk'"));
+	$query=mysql_fetch_array(mysql_query("select * from matakuliah where kd_mk='$kd_mk'"));
 ?>
 <div class="post">
-	<h2 class="title"><a href="#">Jurnal <?php echo $query['nama_kelas'];?></a></h2>
+	<h2 class="title"><a href="#">Jurnal <?php echo $query['nm_mk'];?></a></h2>
 	<p class="meta"><em>Posted by <a href="#">kelompok 3</a></em></p>
 	<div class="entry">
 		<p>
 		<form action="?page=proses1" method="post" name="postform">
 		<input type="hidden" value="<?php echo $query['kd_mk'];?>" name="kd_mk"/>
-		<table class="datatable">
+		<table>
 		<tr>
 			<td width="24%" align="left" colspan="6">Tanggal : <input type="text" name="tanggal"  value="<?php if(empty($_POST['tgl'])){ echo $tanggal;}else{ echo "$_POST[tgl]$_GET[tgl]"; }?>" size="11"><a href="javascript:void(0)" onClick="if(self.gfPop)gfPop.fPopCalendar(document.postform.tanggal);return false;" ><img name="popcal" align="absmiddle" src="calender/calbtn.gif" width="34" height="29" border="0" alt=""></a></td>
 		</tr>
 		<tr>
 			<td>Materi</td>
-			<td><input type="text" size="20" name="nm_mk" /></td>
+			<td>	<input type="text" size="20" name="materi" /></td>
 		</tr>
+		
 		<tr>
 		<td>Kelas</td>
 			<td>
@@ -53,24 +54,23 @@
 			?>
 			</select>	
 			</td>
+			</tr>
 			<tr>
 			<td>VerIifikasi Dosen
 			<?php
 				echo "<input type=checkbox name=hadir[] value=$row[kd_dosen] id='$no'>";
 				$no++;
 				?>
-			</td>
-			
-			<td>Verifikasi PK 
+				Verifikasi PK 
 
 			<?php
 				echo "<input type=checkbox name=hadir[] value=$row[pk] id=$no>";
 				$no++;
 				?>
 			</td>
+			</tr>
 			
-			
-			
+			<table class="datatable">
 		
 		<tr>
 			<th>No</th>

@@ -1,10 +1,11 @@
 <?php 
 	include "conn.php";
 	$kd_mk=$_GET['kd_mk'];
-	$query=mysql_fetch_array(mysql_query("select * from kelas where kd_mk='$kd_mk'"));
+	$query=mysql_fetch_array(mysql_query("select * from matakuliah where kd_mk='$kd_mk'"));
+	$kelas=mysql_fetch_array(mysql_query("select * from kelas where kd_kelas='$query[kd_kelas]'"));
 ?>
 <div class="post">
-	<h2 class="title"><a href="#">ABSENSI KELAS <?php echo $query['nama_kelas'];?></a></h2>
+	<h2 class="title"><a href="#">Absensi Matakuliah <?php echo $query['nm_mk'];?> <?php echo $kelas['nama_kelas'];?></a></h2>
 	<p class="meta"><em>Posted by <a href="#">kelompok 3</a></em></p>
 	<div class="entry">
 		<p>
@@ -25,9 +26,9 @@
 		<?php
 		//penting nech buat kasih nilai awal cekbox
 		$no=0;
-		
 		$query=mysql_query("select * from siswa where kd_mk='$kd_mk'");
 		while($row=mysql_fetch_array($query)){
+		
 		?>
 		<tr>
 			<td><?php echo $c=$c+1;?></td>
