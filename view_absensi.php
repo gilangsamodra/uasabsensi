@@ -1,10 +1,11 @@
 <?php include "conn.php";
-$kd_kelas=$_GET['kd_kelas'];
-$query=mysql_fetch_array(mysql_query("select * from kelas where kd_kelas='$kd_kelas'"));
+$kd_mk=$_GET['kd_mk'];
+$query=mysql_fetch_array(mysql_query("select * from matakuliah where kd_mk='$kd_mk'"));
+	$kelas=mysql_fetch_array(mysql_query("select * from kelas where kd_kelas='$query[kd_kelas]'"));
 
 ?>
 <div class="post">
-	<h2 class="title"><a href="#">VIEW ABSENSI KELAS <?php echo $query['nama_kelas'];?></a></h2>
+	<h2 class="title"><a href="#">View Absensi Matakuliah <?php echo $query['nm_mk'];?> <?php echo $kelas['nama_kelas'];?></a></h2>
 	<p class="meta"><em>Sunday, April 26, 2009 7:27 AM Posted by <a href="#">Someone</a></em></p>
 	<div class="entry">
 		<p>
@@ -18,10 +19,10 @@ $query=mysql_fetch_array(mysql_query("select * from kelas where kd_kelas='$kd_ke
 			<th>Alfa (A)</th>
 		</tr>
 		<?php
-		$kd_kelas=$_GET['kd_kelas'];
+		$kd_mk=$_GET['kd_mk'];
 		$tanggal=$_GET['tanggal'];
 		
-		$query=mysql_query("select * from absensi where kd_kelas='$kd_kelas' and tanggal='$tanggal'",$koneksi);
+		$query=mysql_query("select * from absensi where kd_mk='$kd_mk' and tanggal='$tanggal'",$koneksi);
 		
 		while($row=mysql_fetch_array($query)){
 			$siswa=mysql_fetch_array(mysql_query("select * from siswa where kd_siswa='$row[kd_siswa]'",$koneksi));
