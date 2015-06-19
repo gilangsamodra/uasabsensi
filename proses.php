@@ -1,6 +1,6 @@
 <?php 
 include "conn.php";
-$kd_kelas=$_POST['kd_kelas'];
+$kd_mk=$_POST['kd_mk'];
 $tanggal=$_POST['tanggal'];
 
 if(isset($_POST['selesai'])){
@@ -11,11 +11,11 @@ if(isset($_POST['selesai'])){
 		$jumlah=count($kd_siswa);
 	
 		for($i=0;$i<$jumlah;$i++){
-			$hadir=mysql_query("insert into absensi(kd_siswa,kd_kelas,keterangan,tanggal,selesai) values('$kd_siswa[$i]','$kd_kelas','h','$tanggal','yes')",$koneksi);
+			$hadir=mysql_query("insert into absensi(kd_siswa,kd_mk,keterangan,tanggal,selesai) values('$kd_siswa[$i]','$kd_mk','h','$tanggal','yes')",$koneksi);
 		}
 		
 		?>
-		<script language="javascript">document.location.href="?page=view_absensi&kd_kelas=<?php echo $kd_kelas;?>&tanggal=<?php echo $tanggal;?>";</script>
+		<script language="javascript">document.location.href="?page=view_absensi&kd_mk=<?php echo $kd_mk;?>&tanggal=<?php echo $tanggal;?>";</script>
 		<?php 
 	}
 	
@@ -26,11 +26,11 @@ if(isset($_POST['selesai'])){
 	
 	
 		for($i=0;$i<$jumlah;$i++){
-			$hadir=mysql_query("insert into absensi(kd_siswa,kd_kelas,keterangan,tanggal,selesai) values('$kd_siswa[$i]','$kd_kelas','s','$tanggal','yes')",$koneksi);
+			$hadir=mysql_query("insert into absensi(kd_siswa,kd_mk,keterangan,tanggal,selesai) values('$kd_siswa[$i]','$kd_mk','s','$tanggal','yes')",$koneksi);
 		}
 		
 		?>
-		<script language="javascript">document.location.href="?page=view_absensi&kd_kelas=<?php echo $kd_kelas;?>&tanggal=<?php echo $tanggal;?>";</script>
+		<script language="javascript">document.location.href="?page=view_absensi&kd_mk=<?php echo $kd_mk;?>&tanggal=<?php echo $tanggal;?>";</script>
 		<?php 
 	}
 	
@@ -41,11 +41,11 @@ if(isset($_POST['selesai'])){
 	
 	
 		for($i=0;$i<$jumlah;$i++){
-			$hadir=mysql_query("insert into absensi(kd_siswa,kd_kelas,keterangan,tanggal,selesai) values('$kd_siswa[$i]','$kd_kelas','i','$tanggal','yes')",$koneksi);
+			$hadir=mysql_query("insert into absensi(kd_siswa,kd_mk,keterangan,tanggal,selesai) values('$kd_siswa[$i]','$kd_mk','i','$tanggal','yes')",$koneksi);
 		}
 		
 		?>
-		<script language="javascript">document.location.href="?page=view_absensi&kd_kelas=<?php echo $kd_kelas;?>&tanggal=<?php echo $tanggal;?>";</script>
+		<script language="javascript">document.location.href="?page=view_absensi&kd_mk=<?php echo $kd_mk;?>&tanggal=<?php echo $tanggal;?>";</script>
 		<?php 
 	}
 	
@@ -56,15 +56,15 @@ if(isset($_POST['selesai'])){
 	
 	
 		for($i=0;$i<$jumlah;$i++){
-			$hadir=mysql_query("insert into absensi(kd_siswa,kd_kelas,keterangan,tanggal,selesai) values('$kd_siswa[$i]','$kd_kelas','a','$tanggal','yes')",$koneksi);
+			$hadir=mysql_query("insert into absensi(kd_siswa,kd_mk,keterangan,tanggal,selesai) values('$kd_siswa[$i]','$kd_mk','a','$tanggal','yes')",$koneksi);
 		}
 		
 		?>
-		<script language="javascript">document.location.href="?page=view_absensi&kd_kelas=<?php echo $kd_kelas;?>&tanggal=<?php echo $tanggal;?>";</script>
+		<script language="javascript">document.location.href="?page=view_absensi&kd_mk=<?php echo $kd_mk;?>&tanggal=<?php echo $tanggal;?>";</script>
 		<?php 
 	}
 }else{
 	unset($_POST['selesai']);
-	?><script language="javascript">document.location.href="?page=input_absensi&kd_kelas=<?php echo $kd_kelas;?>&tanggal=<?php echo $tanggal;?>";</script><?php
+	?><script language="javascript">document.location.href="?page=input_absensi&kd_mk=<?php echo $kd_mk;?>&tanggal=<?php echo $tanggal;?>";</script><?php
 }
 ?>

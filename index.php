@@ -36,8 +36,12 @@ if (isset($_POST['userid']))
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <title>Login</title>
+<<<<<<< HEAD
 <body background=keyboard.jpg>
 <body onLoad=document.postform.elements['userid'].focus();>
+=======
+<body background="images/kami.jpg" onLoad=document.postform.elements['userid'].focus();>
+>>>>>>> 6f45ecc2b796cb61904d10d673ae194a9da8db27
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <table width="19%" border="0" cellpadding="0" cellspacing="0" bordercolor="#99CC99" align="center">

@@ -58,7 +58,7 @@
 		
 		//untuk input
 		if(isset($_POST['nm_mk'])){
-			$nm_mk=strtoupper($_POST['nm_mk']);
+			$nm_mk=ucwords($_POST['nm_mk']);
 				$kd_kelas=$_POST['kelas'];
 				$kd_dosen=$_POST['dosen'];
 			
@@ -81,7 +81,7 @@
 		<br />
 		<table class="datatable">
 		<tr>
-		<th>Kode Matakuliah</th>
+		<th>No</th>
 		<th>Matakuliah</th>
 		<th>Kelas</th>
 		<th>Dosen</th>

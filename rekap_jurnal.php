@@ -1,8 +1,7 @@
-<?php include "conn.php";
-?>
+<?php include "conn.php";?>
 <div class="post">
-	<h2 class="title"><a href="#">Rekap Absensi </a></h2>
-	<p class="meta"><em>Sunday, April 26, 2009 7:27 AM Posted by <a href="#">Someone</a></em></p>
+	<h2 class="title"><a href="#">REKAP ABSENSI KELAS <?php echo $query['nama_kelas'];?></a></h2>
+	<p class="meta"><em>Posted by <a href="#">kelompok 3</a></em></p>
 	<div class="entry">
 		<p>
 		<form action="?page=rekap_absensi" method="post" name="postform">
@@ -13,19 +12,15 @@
 		  <td width="18%" align="left"><div align="right">s/d Tanggal</div></td>
 			<td width="28%" align="left"><input type="text" name="tgl2"  value="<?php if(empty($_POST['tgl'])){ echo $tanggal;}else{ echo "$_POST[tgl]$_GET[tgl]"; }?>" size="11"><a href="javascript:void(0)" onClick="if(self.gfPop)gfPop.fPopCalendar(document.postform.tgl2);return false;" ><img name="popcal" align="absmiddle" src="calender/calbtn.gif" width="34" height="29" border="0" alt=""></a></td>
 			<td width="24%">
-			<select name="matakuliah">
-			<option value="0" selected="selected">Pilih Matakuliah</option>
+			<select name="kelas">
+			<option value="0" selected="selected">Pilih Kelas</option>
 			<?php 
-			$query=mysql_query("select * from matakuliah order by nm_mk asc",$koneksi);
+			
+			$query=mysql_query("select * from kelas order by nama_kelas asc",$koneksi);
 			
 			while($row=mysql_fetch_array($query))
 			{
-			//tampil ceckbox
-				?><option 
-				value="<?php  echo $row['kd_mk']; ?>">
-				<?php  echo $row['nm_mk']; ?>
-				</option>
-				<?php 
+				?><option value="<?php  echo $row['kd_kelas']; ?>"><?php  echo $row['nama_kelas']; ?></option><?php 
 			}
 			?>
 			</select>	
@@ -35,45 +30,35 @@
 		</table>	
 		</form>	
 		<br /><br />
-
-		
-			<table class="datatable">
+		<table class="datatable">
 		<tr>
 			<th>No</th>
 			<th>Nama</th>
-			<th>Matakuliah</th>
 			<th>Hadir (H)</th>
 			<th>Sakit (S)</th>
 			<th>Ijin (I)</th>
 			<th>Alfa (A)</th>
 		</tr>
 		<?php
-		
-		$matakuliah=$_POST['matakuliah'];
+		//untuk option
 		$tanggal1=$_POST['tgl1'];
 		$tanggal2=$_POST['tgl2'];
-			
-		//untuk mencari rekap absensi menurut tanggal dan matakuliah
-	
-		echo "Tanggal Awal : ".$tanggal1;
-		echo "<br><br>";
-		echo " Tanggal Akhir : ".$tanggal2;
-		echo "<br><br>";
+		$kelas=$_POST['kelas'];
 		
-		$query=mysql_query("select distinct kd_siswa from absensi where kd_mk='$matakuliah' and tanggal between '$tanggal1' and '$tanggal2' order by tanggal desc",$koneksi);
+		$query=mysql_query("select distinct kd_siswa from absensi where kd_kelas='$kelas' and tanggal between '$tanggal1' and '$tanggal2' order by tanggal desc",$koneksi);
+	
 		
 		while($row=mysql_fetch_array($query)){
 			$siswa=mysql_fetch_array(mysql_query("select * from siswa where kd_siswa='$row[kd_siswa]'",$koneksi));
-			$mk=mysql_fetch_array(mysql_query("select * from matakuliah where kd_mk='$matakuliah[kd_mk]'",$koneksi));
 			$keterangan=$row['keterangan'];
 			?>
 			<tr>
 				<td><?php echo $c=$c+1;?></td>
 				<td><?php echo $siswa['nama'];?></td>
-				<td><?php echo $mk['nm_mk'];?></td>
 				<td align="center">
 				<?php
 					$hadir=mysql_query("select * from absensi where kd_siswa='$row[kd_siswa]' and keterangan='h' and tanggal between '$tanggal1' and '$tanggal2' order by tanggal desc",$koneksi);
+					
 					$jumlah=mysql_num_rows($hadir);
 					echo $jumlah;
 				?>
@@ -81,24 +66,31 @@
 				<td align="center">
 				<?php
 					$hadir=mysql_query("select * from absensi where kd_siswa='$row[kd_siswa]' and keterangan='s' and tanggal between '$tanggal1' and '$tanggal2' order by tanggal desc",$koneksi);
+					
 					$jumlah=mysql_num_rows($hadir);
 					echo $jumlah;
 				?>
 				</td>
+				
 				<td align="center">
 				<?php
-				$hadir=mysql_query("select * from absensi where kd_siswa='$row[kd_siswa]' and keterangan='i' and tanggal between '$tanggal1' and '$tanggal2' order by tanggal desc",$koneksi);
+					$hadir=mysql_query("select * from absensi where kd_siswa='$row[kd_siswa]' and keterangan='i' and tanggal between '$tanggal1' and '$tanggal2' order by tanggal desc",$koneksi);
+					
 					$jumlah=mysql_num_rows($hadir);
 					echo $jumlah;
 				?>
 				</td>
+				
 				<td align="center">
 				<?php
 					$hadir=mysql_query("select * from absensi where kd_siswa='$row[kd_siswa]' and keterangan='a' and tanggal between '$tanggal1' and '$tanggal2' order by tanggal desc",$koneksi);
+					
 					$jumlah=mysql_num_rows($hadir);
 					echo $jumlah;
 				?>
 				</td>
+				
+				
 			</tr>
 			<?php
 			
