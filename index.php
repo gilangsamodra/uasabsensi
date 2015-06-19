@@ -1,6 +1,7 @@
 <?php   session_start();
 if (isset($_POST['userid']))
 {
+
 	include ("conn.php");
 	$user_name=htmlentities((trim($_POST['userid'])));
 	$password=htmlentities(md5($_POST['passwd']));
@@ -35,6 +36,7 @@ if (isset($_POST['userid']))
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <title>Login</title>
+<body background=keyboard.jpg>
 <body onLoad=document.postform.elements['userid'].focus();>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -54,14 +56,14 @@ if (isset($_POST['userid']))
 		<form action="index.php" method="post" name="postform" id="postform">
 		  <table width="251" height="101" border="0" align="center">
 		  <tr valign="bottom">
-			<td width="104" height="35"><font size="4" face="verdana">Username</font></td>
+			<td width="104" height="35"><font size="4" face="verdana" color="#FB0509">Username</font></td>
 			  <td width="137"><font size="4" face="verdana">
 				<input type="text" name="userid" size="20" id="userid">
 			  </font></td>
 		  </tr>
 		  
 		  <tr valign="top">
-			<td height="34"><font size="4" face="verdana">Password</font></td>
+			<td height="34"><font size="4" face="verdana"color="#FB0509">Password</font></td>
 			  <td><font size="4" face="verdana">
 				<input type="password" name="passwd" size="20" id="passwd">
 			  </font></td>
