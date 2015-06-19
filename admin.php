@@ -8,11 +8,11 @@
 <link href="style.css" rel="stylesheet" type="text/css" media="screen" /></head>
 <body background=biner.jpg>
 	<div id="logo">
-    <p align="left">
-		<h1>	 <img src="unesa.PNG"width="60"; height="60"; _float=left; margin =40px; />		</h1>
-		<h1><a href="#" >Jurnal Matakuliah</a></h1>
-</p>
-	  <a href="#" ><marquee>Teknik Informatika Universitas Negeri Surabaya</marquee></a>
+		<h1>	 <img src="unesa.PNG"width="60"; height="60"; _float=left; margin-left=100px; />
+		<a href="#" >Jurnal Matakuliah</a></h1>
+
+		<a href="#" ><marquee>Teknik Informatika Universitas Negeri Surabaya</marquee></a>
+
 		<p>&nbsp;</p>
 	</div>
 	<hr />
@@ -46,11 +46,9 @@
 	</div>
 	<!-- end #page -->
 	<div id="footer">
-<<<<<<< HEAD
+
 		<p>Copyright (c) 2015 kelompok 3.</p>
-=======
-		<p>	Copyright (c) 2015 kelompok 3.</p>
->>>>>>> 439c7191e91e75d03601ecb427ce92c3def9e0e7
+
 		
   <marquee>
     <img src="kelompok3.jpg"width="50"; height="50"; _float=left; margin =20px; />
