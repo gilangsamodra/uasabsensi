@@ -45,10 +45,10 @@
 	</div>
 	<!-- end #page -->
 	<div id="footer">
-		<p>Copyright (c) 2015 kelompok 4.</p>
+		<p>Copyright (c) 2015 kelompok 3.</p>
 		
   <marquee>
-    <img src="ar.jpg"width="50"; height="50"; _float=left; margin =20px; />
+    <img src="kelompok3.jpg"width="50"; height="50"; _float=left; margin =20px; />
 		</marquee>
 	</div>
 	<!-- end #footer -->
