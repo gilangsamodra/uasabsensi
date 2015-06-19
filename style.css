@@ -181,7 +181,7 @@ hr { display: none; }
 	width: 1000px;
 	margin:0px 0 0px 180px;
 	padding: 70px 0px 0px 0px;
-	background: #00BFFF;/*warna biru */
+
 	
 }
 
@@ -474,12 +474,12 @@ p, td, th {
     width: 100%;
 }
 .datatable td {
-    border: 1px solid #D6DDE6;
+    border: 1px solid yellow;
     padding: 4px;
 }
 .datatable th {
-    border: 1px solid #828282;
-    background-color: #BCBCBC;
+    border: 1px solid yellow;
+    background-color: gold;
     font-weight: bold;
     text-align: left;
     padding-left: 4px;
@@ -494,8 +494,8 @@ p, td, th {
     padding-bottom: 8px;
 }
 .datatable tr.altrow {
-    background-color: #DFE7F2;
-    color: #000000;
+    background-color: blue;
+    color: blue;
 }
 
 
