@@ -2,9 +2,10 @@
 	include "conn.php";
 	$kd_mk=$_GET['kd_mk'];
 	$query=mysql_fetch_array(mysql_query("select * from matakuliah where kd_mk='$kd_mk'"));
+	$kls=mysql_fetch_array(mysql_query("select * from kelas where kd_kelas='$query[kd_kelas]'"));
 ?>
 <div class="post">
-	<h2 class="title"><a href="#">Jurnal <?php echo $query['nm_mk'];?></a></h2>
+	<h2 class="title"><a href="#">Jurnal <?php echo $query['nm_mk'];?> <?php echo $kls['nama_kelas'];?></a></h2>
 	<p class="meta"><em>Posted by <a href="#">kelompok 3</a></em></p>
 	<div class="entry">
 		<p>
@@ -100,10 +101,11 @@
 		
 		?>
 		</table>
-		<tr></tr>
-		<tr>
-			<input type="submit" value="Simpan" />
-		</tr>
+			<br />
+		<input type="checkbox" name="selesai" value="yes" />Tandai Kelas Selesai
+		<br /><br />
+		<input type="submit" value="Input" />
+		</form>
 	
 		</form>
 		</p>
